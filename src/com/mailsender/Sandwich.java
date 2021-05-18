@@ -1,41 +1,47 @@
 package com.mailsender;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Sandwich {
 
     boolean hasMeat;
     boolean hasCheese;
     boolean hasCucumbers;
-    boolean hasTomatoes;
+    int noTomatoes;
+    List<Bread> breads; // tip generic
 
-    public Sandwich(boolean hasMeat) {
-        this(hasMeat, false, false, false);
+    public Sandwich() {
+        breads = new ArrayList<>();
     }
 
-    public Sandwich(boolean hasMeat, boolean hasCheese) {
-        this(hasMeat, hasCheese, false, false);
-    }
-
-    public Sandwich(boolean hasMeat, boolean hasCheese, boolean hasCucumbers) {
-        this(hasMeat, hasCheese, hasCucumbers, false);
-    }
-
-    public Sandwich(boolean hasMeat, boolean hasCheese, boolean hasCucumbers, boolean hasTomatoes) {
-        this.hasMeat = hasMeat;
-        this.hasCheese = hasCheese;
-        this.hasCucumbers = hasCucumbers;
-        this.hasTomatoes = hasTomatoes;
-    }
-
-    public void addCheese() {
+    public Sandwich addCheese() {
         this.hasCheese = true;
+        return this;
     }
 
-    public void addCucumbers() {
+    public Sandwich addCucumbers() {
         this.hasCucumbers = true;
+        return this;
     }
 
-    public void addTomatoes() {
-        this.hasTomatoes = true;
+    public Sandwich addTomatoes() {
+        this.noTomatoes++;
+        return this;
+    }
+
+    public Sandwich addBread(Bread bread) {
+        this.breads.add(bread);
+        return this;
+    }
+
+    public Sandwich removeBread(Bread bread) {
+        this.breads.remove(bread);
+        return this;
+    }
+
+    public Bread getBread(int index) {
+        return this.breads.get(index);
     }
 
 }
